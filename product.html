@@ -327,6 +327,28 @@
                 setActiveCategory(btn.dataset.category);
             });
         });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            // Deteksi perangkat
+            const isMobile = window.matchMedia("(max-width: 991px)").matches;
+
+            if (isMobile) {
+                // Untuk mobile: klik = toggle dropdown
+                document.querySelectorAll(".nav-item.dropdown > a").forEach((dropdownToggle) => {
+                    dropdownToggle.addEventListener("click", function (e) {
+                        e.preventDefault(); // cegah langsung pindah
+                        const menu = this.nextElementSibling;
+
+                        // Tutup dropdown lain
+                        document.querySelectorAll(".dropdown-menu.show").forEach((openMenu) => {
+                            if (openMenu !== menu) openMenu.classList.remove("show");
+                        });
+
+                        menu.classList.toggle("show");
+                    });
+                });
+            }
+        });
     </script>
 </body>
 
