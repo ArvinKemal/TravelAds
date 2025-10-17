@@ -13,41 +13,40 @@
 </head>
 
 <body>
-    <!-- Navbar -->
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-top">
         <div class="container">
-            <a class="navbar-brand text-primary fw-bold" href="index.html">TravelAds</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand fw-bold text-primary" href="index.html">TravelAds</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <ul class="navbar-nav align-items-lg-center gap-lg-4">
 
-                    <!-- Dropdown Brand tanpa icon -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="brand.html" id="navbarBrand" role="button">Brand</a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarBrand">
-                            <li><a class="dropdown-item" href="brand.html">Brand Profile</a></li>
-                            <li><a class="dropdown-item" href="brand.html#team">Designer Team</a></li>
+                        <a class="nav-link dropdown-toggle" href="#" id="brandMenu" role="button">Brand</a>
+                        <ul class="dropdown-menu" aria-labelledby="brandMenu">
+                            <li><a class="dropdown-item" href="brand.html?category=usk">Brand USK</a></li>
+                            <li><a class="dropdown-item" href="brand.html?category=local">Brand Lokal</a></li>
                         </ul>
                     </li>
 
-                    <!-- Dropdown Product -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="product.html" id="navbarProduct" role="button">Product</a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarProduct">
-                            <li><a class="dropdown-item" href="product.html?category=food">Food & Beverage</a></li>
-                            <li><a class="dropdown-item" href="product.html?category=beauty">Health & Beauty</a></li>
+                        <a class="nav-link dropdown-toggle" href="#" id="productMenu" role="button">Product</a>
+                        <ul class="dropdown-menu" aria-labelledby="productMenu">
                             <li><a class="dropdown-item" href="product.html?category=usk">USK Store</a></li>
+                            <li><a class="dropdown-item" href="product.html?category=local">Produk Lokal</a></li>
+                            <li><a class="dropdown-item" href="product.html?category=craft">Kerajinan</a></li>
                         </ul>
                     </li>
 
                     <li class="nav-item"><a class="nav-link" href="news.html">News</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="recruitment.html">Recruitment</a></li>
                 </ul>
             </div>
         </div>
@@ -185,6 +184,30 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Deteksi perangkat
+            const isMobile = window.matchMedia("(max-width: 991px)").matches;
+
+            if (isMobile) {
+                // Untuk mobile: klik = toggle dropdown
+                document.querySelectorAll(".nav-item.dropdown > a").forEach((dropdownToggle) => {
+                    dropdownToggle.addEventListener("click", function (e) {
+                        e.preventDefault(); // cegah langsung pindah
+                        const menu = this.nextElementSibling;
+
+                        // Tutup dropdown lain
+                        document.querySelectorAll(".dropdown-menu.show").forEach((openMenu) => {
+                            if (openMenu !== menu) openMenu.classList.remove("show");
+                        });
+
+                        menu.classList.toggle("show");
+                    });
+                });
+            }
+        });
+    </script>
+
 </body>
 
 </html>
