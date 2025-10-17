@@ -176,6 +176,24 @@ section.bg-light {
     color: #007bff !important;
 }
 
+/* Dropdown hover hanya aktif di desktop */
+@media (min-width: 992px) {
+    .navbar .dropdown:hover .dropdown-menu {
+        display: block;
+        margin-top: 0;
+    }
+}
+
+/* Hilangkan ikon default Bootstrap pada toggle */
+.navbar .dropdown-toggle::after {
+    display: none;
+}
+
+/* Jarak antar item navbar */
+.navbar-nav .nav-link {
+    padding: 0.5rem 1rem;
+}
+
 
 /* Responsif */
 @media (max-width: 768px) {
